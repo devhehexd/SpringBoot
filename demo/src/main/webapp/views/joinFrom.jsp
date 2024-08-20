@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>로그인 폼 </h3>
-	<form action="/member/login" method="post">
+	<h3> 회원가입 폼 </h3>
+	<form action="/member/join" method="post">
 	id: <input type="text" name="id" > <br/>
 	pwd: <input type="password" name="pwd" > <br/>
-	<input type="submit" value="로그인" > <br/>
+	<input type="submit" value="가입" > <br/>
 	</form>
 </body>
 </html>

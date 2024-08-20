@@ -4,13 +4,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class MemDao {
-	
 	public void insert() {
 		System.out.println("dao insert");
 	}
 	
 	public void select() {
-		System.out.println("dao select");
+		System.out.println("dao select ");
 	}
 	
 	public void selectAll() {
@@ -18,10 +17,14 @@ public class MemDao {
 	}
 	
 	public void update() {
-		System.out.println("dao update");
+		System.out.println("dao update ");
 	}
 	
 	public void delete() {
-		System.out.println("dao delete");
+		System.out.println("dao delete ");
 	}
+	
+	
+	
+	
 }

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>검색 완료</h3>
+<h3> 검색 완료 </h3>
+
 </body>
 </html>

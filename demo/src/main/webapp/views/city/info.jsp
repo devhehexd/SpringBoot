@@ -7,11 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>회원가입 폼</h3>
-<form action="/member/join" method="post">
-id: <input type="text" name="id"><br/>
-pwd: <input type="password" name="pwd"><br/>
-<input type="submit" value="가입">
+<h3> 도시 검색</h3>
+<form action="/city/detail" method="get">
+id: <input type="number" name="id"> <br/>
+<input type="submit" value="검색">
 </form>
 </body>
 </html>

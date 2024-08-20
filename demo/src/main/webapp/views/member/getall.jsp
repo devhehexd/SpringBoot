@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>전체 검색 완료</h3>
+<h3>전체검색 </h3>
 </body>
 </html>
