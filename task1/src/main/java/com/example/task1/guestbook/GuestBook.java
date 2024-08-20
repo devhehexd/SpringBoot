@@ -5,7 +5,7 @@ import java.util.Date;
 //VO
 public class GuestBook {
 
-    private Integer num;
+    private int num;
     private String writer;
     private String password;
     private Date wdate;
@@ -15,7 +15,7 @@ public class GuestBook {
 
     }
 
-    public GuestBook(Integer num, String writer, String password, Date wdate, String content) {
+    public GuestBook(int num, String writer, String password, Date wdate, String content) {
         this.num = num;
         this.writer = writer;
         this.password = password;
@@ -47,11 +47,11 @@ public class GuestBook {
         this.content = content;
     }
 
-    public Integer getNum() {
+    public int getNum() {
         return num;
     }
 
-    public void setNum(Integer num) {
+    public void setNum(int num) {
         this.num = num;
     }
 

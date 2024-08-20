@@ -15,9 +15,7 @@ public class GuestBookDao {
         dbconn = MysqlConnection.getInstance();
     }
 
-    public GuestBook select(Integer num) {
-
-        GuestBook gb = null;
+    public GuestBook select(int num) {
 
         Connection conn = dbconn.getConnection();
         String sql = "SELECT * FROM guestbook WHERE num=?";
@@ -27,7 +25,7 @@ public class GuestBookDao {
             pstmt.setInt(1, num);
             ResultSet rs = pstmt.executeQuery();
             if(rs.next()) {
-                gb = new GuestBook(rs.getInt(1), rs.getString(2), rs.getString(3),
+                return new GuestBook (rs.getInt(1), rs.getString(2), rs.getString(3),
                         rs.getDate(4),  rs.getString(5));
             }
 
@@ -40,7 +38,7 @@ public class GuestBookDao {
                 e.printStackTrace();
             }
         }
-        return gb;
+        return null;
     }
 
     public void insert(GuestBook gb) {
@@ -132,6 +130,28 @@ public class GuestBookDao {
             }
         }
 
+    }
+
+    public void delete(int num) {
+        Connection conn = dbconn.getConnection();
+        String sql = "DELETE FROM guestbook WHERE num = ?";
+
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, num);
+            pstmt.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                conn.close();
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

@@ -3,10 +3,7 @@ package com.example.task1.guestbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/guestbook")
@@ -34,7 +31,7 @@ public class GuestBookController {
     }
 
     @GetMapping("/detail")
-    public String detail(Integer num, Model m) {
+    public String detail(int num, Model m) {
         GuestBook gb = gbService.getGuestBook(num);
         if (gb == null) {
             m.addAttribute("msg", "없는 번호입니다.");
@@ -45,14 +42,48 @@ public class GuestBookController {
         return "guestbook/detail";
     }
 
+    @GetMapping("/password")
+    public String passwordForm(int num, Model m) {
+        GuestBook gb = gbService.getGuestBook(num);
+        m.addAttribute("gb", gb);
+        return "guestbook/password";
+    }
+
+    @PostMapping("/password")
+    public String password(int num, String password, @RequestParam(value = "action", required = false) String action, Model m) {
+        GuestBook gb = gbService.getGuestBook(num);
+        if (gb.getPassword().equals(password)) {
+            if ("delete".equals(action)) {
+                gbService.deleteGuestBook(num);
+                return "redirect:/index";
+            }
+            m.addAttribute("gb", gb);
+            return "redirect:/guestbook/edit?num=" + num;
+        }
+        else {
+            m.addAttribute("msg", "비밀번호가 틀렸습니다. 다시 입력해주세요.");
+            m.addAttribute("gb", gb);
+            return "guestbook/password";
+        }
+    }
+
     @GetMapping("/edit")
-    public String editForm(Model m) {
-        return "/guestbook/password";
+    public String editForm(int num, Model m) {
+        GuestBook gb = gbService.getGuestBook(num);
+        m.addAttribute("gb", gb);
+        return "/guestbook/edit";
     }
 
     @PostMapping("/edit")
     public String edit(GuestBook gb) {
         gbService.editGuestBook(gb);
         return "index";
+    }
+
+    @GetMapping("/delete")
+    public String del(int num, Model m) {
+        GuestBook gb = gbService.getGuestBook(num);
+        m.addAttribute("gb", gb);
+        return "guestbook/password";
     }
 }

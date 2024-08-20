@@ -26,4 +26,8 @@ public class GuestBookService {
     public void editGuestBook(GuestBook gb){
         gbDao.update(gb);
     }
+
+    public void deleteGuestBook(int num){
+        gbDao.delete(num);
+    }
 }
