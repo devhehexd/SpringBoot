@@ -35,34 +35,44 @@ public class GuestBookController {
         GuestBook gb = gbService.getGuestBook(num);
         if (gb == null) {
             m.addAttribute("msg", "없는 번호입니다.");
-        }
-        else {
+        } else {
             m.addAttribute("gb", gb);
         }
         return "guestbook/detail";
     }
 
+//    @GetMapping("/password")
+//    public String passwordForm(int num, Model m) {
+//        GuestBook gb = gbService.getGuestBook(num);
+//        m.addAttribute("gb", gb);
+//        return "guestbook/password";
+//    }
+
     @GetMapping("/password")
-    public String passwordForm(int num, Model m) {
-        GuestBook gb = gbService.getGuestBook(num);
-        m.addAttribute("gb", gb);
-        return "guestbook/password";
+    public void passwordForm() {
+
     }
 
     @PostMapping("/password")
     public String password(int num, String password, @RequestParam(value = "action", required = false) String action, Model m) {
+
         GuestBook gb = gbService.getGuestBook(num);
+
         if (gb.getPassword().equals(password)) {
             if ("delete".equals(action)) {
                 gbService.deleteGuestBook(num);
-                return "redirect:/index";
+                return "redirect:/guestbook/list";
             }
             m.addAttribute("gb", gb);
             return "redirect:/guestbook/edit?num=" + num;
         }
-        else {
-            m.addAttribute("msg", "비밀번호가 틀렸습니다. 다시 입력해주세요.");
+        else if (password == null) {
             m.addAttribute("gb", gb);
+            return "guestbook/password";
+        }
+        else {
+            m.addAttribute("gb", gb);
+            m.addAttribute("msg", "비밀번호가 틀렸습니다. 다시 입력해주세요.");
             return "guestbook/password";
         }
     }

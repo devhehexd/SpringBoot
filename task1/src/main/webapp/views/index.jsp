@@ -14,7 +14,5 @@
 <h3>방명록</h3>
 <a href="/guestbook/add">글 작성</a><br/>
 <a href="/guestbook/list">글 목록</a><br/>
-<a href="">글 수정</a><br/>
-<a href="">글 삭제</a><br/>
 </body>
 </html>

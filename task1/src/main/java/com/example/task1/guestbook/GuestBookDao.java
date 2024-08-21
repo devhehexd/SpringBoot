@@ -44,7 +44,7 @@ public class GuestBookDao {
     public void insert(GuestBook gb) {
 
         Connection conn = dbconn.getConnection();
-        String sql = "INSERT INTO guestbook(writer, password, content, wdate) values(?, ?, ?, sysdate())";
+        String sql = "INSERT INTO guestbook(writer, password, wdate, content) values(?, ?, sysdate(), ?)";
 
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);

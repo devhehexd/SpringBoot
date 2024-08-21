@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class MysqlConnection {
 
     private static MysqlConnection mysqlConn = new MysqlConnection();
-    private String url = "jdbc:mysql://localhost:3306/guestbook?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true";
+    private String url = "jdbc:mysql://localhost:3307/guestbook?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true";
     private String driver = "com.mysql.cj.jdbc.Driver";
 
     //싱글톤. 자원관리
