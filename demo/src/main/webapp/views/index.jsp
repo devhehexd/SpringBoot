@@ -8,6 +8,7 @@
 </head>
 <body>
 	<h3>hello spring</h3>
+	${sessionScope.loginId} 로그인 중<br/>
 	<a href="/mem/join">회원가입</a><br/>
 	<a href="/member/login">로그인</a><br/>
 	${m1.id} / ${m1.pwd } / ${m1.name }/ ${m1.email } <br/>
