@@ -50,7 +50,7 @@ public class MemberDao {
     }
 
     public void delete(String id) {
-        String sql = "DELETE FROM member WHREE id = ?";
+        String sql = "DELETE FROM member WHERE id = ?";
         temp.update(sql, id);
     }
 }

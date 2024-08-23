@@ -21,8 +21,8 @@
     ${sessionScope.loginId}님의 타입은 ${sessionScope.type} 입니다.<br/>
     <a href="/member/logout">로그아웃</a>
     <a href="/member/memberInfo">내 정보확인</a>
-    <a href="/member/login">탈퇴</a>
-    <a href="/member/login">게시판</a>
+    <a href="/member/out">탈퇴</a>
+    <a href="/board/list">게시판</a>
 </c:if>
 
 </body>

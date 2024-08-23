@@ -12,7 +12,7 @@
     <title>Title</title>
   <script type="text/javascript">
     const modify = () => {
-      const req = new XMLHttpRequest();
+      //const req = new XMLHttpRequest();
 
       const nameBox = document.getElementById("nameBox");
       nameBox.innerHTML = '<input type="text" id="nameInput" name="name" value="${member.name}">';

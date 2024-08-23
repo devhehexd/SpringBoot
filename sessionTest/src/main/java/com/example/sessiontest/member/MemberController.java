@@ -97,9 +97,17 @@ public class MemberController {
 
     @PostMapping("/memberInfo")
     public String memberInfo(Member member, HttpSession session) {
-
-        System.out.println(member);
         memService.editMember(member);
-        return "redirect:/member/memberInfo";
+        session.setAttribute("type", member.getType());
+        return "redirect:/index.jsp";
     }
+
+    @GetMapping("/out")
+    public String out(HttpSession session) {
+        String loggedId = (String) session.getAttribute("loginId");
+        memService.deleteMember(loggedId);
+        return "redirect:/member/logout";
+    }
+    //forward: 서버 내에서 이동. url 안바뀜. /member/join => index
+    //redirect: 새 요청 시킴. 새 request 객체. /member/join => index
 }
