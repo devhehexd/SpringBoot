@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        const a = (num) => {
+
+            console.log(num)
+
+            const req = new XMLHttpRequest();
+
+            req.onload = () => {
+                let res = document.getElementById("res")
+                let obj = JSON.parse(req.responseText); //JavaScript 객체로 변환
+                let txt = "글 상세내용<br/>";
+                txt += "num: " + obj.num + "<br/>";
+                txt += "writer: " + obj.writer + "<br/>";
+                txt += "wdate: " + obj.wdate + "<br/>";
+                txt += "title: " + obj.title + "<br/>";
+                txt += "content: " + obj.content + "<br/>";
+                res.innerHTML = txt;
+            }
+
+            req.open('get', '/board/getAjax?num=' + num);
+            req.send();
+        }
+
+        const b = () => {
+            let res = document.getElementById("res");
+            res.innerHTML = '';
+        }
+
+        const c = () => {
+
+            let type = document.getElementById("gettype").value;
+            let val = document.getElementById("search").value;
+
+            let url = "/board/getby" + type + "?" + type + "=" + val;
+            //alert(url);
+            location.href = url;
+        }
+
+        // function saveToCookie(num) {
+        //
+        //     console.log("Num to save:", num);
+        //
+        //     let readPosts = getCookie("readPosts");
+        //
+        //     if (!readPosts.includes(num)) {
+        //         if (readPosts !== "") {
+        //             readPosts += ",";
+        //         }
+        //         readPosts += num;
+        //         document.cookie = "readPosts=" + readPosts + "; path=/";
+        //     }
+        // }
+        //
+        // function getCookie(name) {
+        //     let matches = document.cookie.match(new RegExp(
+        //         "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        //     ));
+        //     return matches ? decodeURIComponent(matches[1]) : undefined;
+        // }
+    </script>
+</head>
+<body>
+<h3>게시판</h3>
+<span id="res" style="position: absolute; top: 200px; left: 300px"></span>
+<a href="/board/readlist">오늘 읽은 글 목록</a><br/>
+<a href="/board/add">글 작성</a><br/>
+<select id="gettype">
+    <option value="writer">작성자</option>
+    <option value="title">제목</option>
+</select>
+<input type="text" id="search">
+<input type="button" value="검색" onclick="c()">
+<table border="1">
+    <tr>
+        <th>num</th><th>title</th><th>writer</th>
+    </tr>
+        <tr th:each="b:${list}">
+            <td><a th:href="@{/board/detail(num=${b.num})}" th:text="${b.num}" onclick="saveToCookie([[${b.num}]])"></a></td>
+            <td th:text="${b.title}" th:onmouseover="a([[${b.num}]])" onmouseout="b()"></td>
+            <td th:text="${b.writer}"></td>
+        </tr>
+</table>
+</body>
+</html>

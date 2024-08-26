@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>오늘 읽은 글 목록</h3>
+<table border="1">
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+    </tr>
+    <tr th:each="rl:${readList}">
+        <td th:text="${rl.num}"></td>
+        <td th:text="${rl.title}"></td>
+        <td th:text="${rl.writer}"></td>
+    </tr>
+</table>
+</body>
+</html>
