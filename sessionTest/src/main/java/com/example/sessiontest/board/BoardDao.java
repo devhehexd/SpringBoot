@@ -64,7 +64,7 @@ public class BoardDao {
     }
 
     public ArrayList<Board> selectByWriter(String writer) {
-        String sql = "SELECT * FROM board WHERE writer = ?";
+        String sql = "SELECT * FROM board WHERE writer Like CONCAT('%', ?, '%') ORDER BY num";
         ArrayList<Board> list = (ArrayList<Board>) temp.query(sql, new BoardMapper(), writer);
         return list;
     }

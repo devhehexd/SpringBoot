@@ -45,7 +45,7 @@
   <option>작성자</option>
   <option>제목</option>
 </select>
-<input type="text" name="search"/>
+<input type="text" name="search">
 <input type="button" value="검색">
 <table border="1">
   <tr>

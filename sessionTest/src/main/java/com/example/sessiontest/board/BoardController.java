@@ -65,4 +65,5 @@ public class BoardController {
         bdService.deleteBoard(num);
         return "redirect:/board/list";
     }
+
 }
