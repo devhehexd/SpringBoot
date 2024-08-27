@@ -7,10 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -87,6 +84,7 @@ public class BoardController {
     public String readlist(Model model, HttpServletRequest request) {
 
         Cookie[] cookies = request.getCookies();
+        System.out.println(cookies.length);
 
         String readPosts = "";
 
@@ -100,12 +98,9 @@ public class BoardController {
             }
         }
 
-        System.out.println("num= " + readPosts);
-
         if (readPosts == null || readPosts.trim().isEmpty()) {
             readPosts = "";
         }
-
 
         String[] postNumbers = readPosts.split(",");
 
@@ -122,4 +117,5 @@ public class BoardController {
 
         return "/board/readlist";
     }
+
 }
