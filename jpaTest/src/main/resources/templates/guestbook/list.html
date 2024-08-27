@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>방명록 목록</h3>
+<a href="/guestbook/add">글 작성</a><br/>
+<table border="1">
+  <tr>
+    <th>번호</th>
+    <th>작성자</th>
+    <th>작성일</th>
+    <th>내용</th>
+  </tr>
+  <tr th:each="p:${list}">
+    <td a th:href="@{/guestbook/detail(num=${p.num})}" th:text="${p.num}"></td>
+    <td th:text="${p.writer}"></td>
+    <td th:text="${p.pdate}"></td>
+    <td th:text="${p.content}"></td>
+  </tr>
+</table>
+</body>
+</html>
