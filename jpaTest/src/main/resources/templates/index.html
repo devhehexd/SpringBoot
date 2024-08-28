@@ -18,7 +18,15 @@
     <a href="/member/logout">로그아웃</a>
     <a href="/member/memberInfo">내 정보확인</a>
     <a href="/member/out">탈퇴</a>
-    <a href="/board/list">게시판</a>
+    <a href="/board/list">게시판</a><br/>
+    <div th:if="${session.type.equals('판매자')}">
+        판매자 메뉴<br/>
+        <a href="/product/list">내 상품 목록</a>
+    </div>
+    <div th:if="${session.type.equals('구매자')}">
+        구매자 메뉴<br/>
+        <a href="/product/list">전체 상품 목록</a>
+    </div>
 </div>
 </body>
 </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>상품 등록</h3>
+<form action="/product/add" method="post" enctype="multipart/form-data">
+    <table border="1">
+        <tr>
+            <th>상품명</th>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <th>가격</th>
+            <td><input type="number" name="price"></td>
+        </tr>
+        <tr>
+            <th>수량</th>
+            <td><input type="number" name="amount"></td>
+        </tr>
+        <tr>
+            <th>사진</th>
+            <td>
+                파일: <input type="file" name="multipartFile"><br/>
+            </td>
+        </tr>
+        <tr>
+            <th>seller</th>
+            <td><input type="text" name="id" th:value="${session.loginId}" readonly></td>
+            <td><input type="submit" value="등록"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
