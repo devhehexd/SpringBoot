@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h3>자료 상세 페이지</h3>
+<form action="/data/detail" method="post">
+  <table border="1">
+    <tr>
+      <th>번호</th>
+      <td><input type="text" name="num" th:value="${data.num}" readonly></td>
+    </tr>
+    <tr>
+      <th>작성자</th>
+      <td><input type="text" th:value="${data.writer.id}" readonly></td>
+    </tr>
+    <tr>
+      <th>작성일</th>
+      <td><input type="text" th:value="${data.wdate}" readonly></td>
+    </tr>
+    <tr>
+      <th>제목</th>
+      <td><input type="text" name="title" th:value="${data.title}" readonly></td>
+    </tr>
+    <tr>
+      <th>자료</th>
+      <td><a th:text="${data.data}" th:href="@{/data/down(fname=${data.data},num=${data.num})}"></a><br/>
+      다운로드 수: <span th:text="${data.downloadCount}"></span>
+      </td>
+    </tr>
+    <tr>
+      <th>내용</th>
+      <td><textarea rows="5" cols="30" name="content" readonly>[[${data.content}]]</textarea>
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
