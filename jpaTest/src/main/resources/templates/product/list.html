@@ -23,13 +23,15 @@
         <th>번호</th>
         <th>상품명</th>
         <th>가격</th>
+        <th>수량</th>
         <th>판매자</th>
         <th>상품 이미지</th>
     </tr>
     <tr th:each="p:${list}">
         <td th:text="${p.num}"></td>
-        <td th:text="${p.name}"></td>
+        <td><a th:href="@{/product/detail(num=${p.num})}">[[${p.name}]]</a></td>
         <td th:text="${p.price}"></td>
+        <td th:text="${p.amount}"></td>
         <td th:text="${p.id.id}"></td>
         <td><img th:src="@{/product/read-img(fname=${p.img})}" style="width: 150px; height: 150px"></td>
     </tr>

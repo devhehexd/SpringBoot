@@ -21,4 +21,5 @@ public class ProductDto {
     private Member id;
     private String img;
     private MultipartFile multipartFile; //폼에서 전송한 이미지를 저장할 변수
+    //private MultipartFile[] multipartFile => 여러 사진을 저장하고 싶을 경우 배열을 사용
 }

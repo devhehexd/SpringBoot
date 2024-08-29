@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // function a() {
+        //   document.getElementById("addfile").style.display = "block";
+        //   document.getElementById("done").style.display = "inline-block";
+        //   document.getElementById("cancel").style.display = "inline-block";
+        // }
+        //
+        // function hideInputFile() {
+        //   document.getElementById("addfile").style.display = "none";
+        //   document.getElementById("done").style.display = "none";
+        //   document.getElementById("cancel").style.display = "none";
+        // }
+        window.onload = () => {
+            f.style.display = 'none'; // 이미지 수정 폼 화면에 안보이게 설정
+        }
+
+        const a = () => {
+            f.style.display = ''; //이미지 수정 폼 화면에 안보이게 설정
+        }
+
+        const b = () => {
+            f.style.display = 'none';
+        }
+    </script>
+</head>
+<body> <!--onload="hideInputFile()"-->
+<h3>제품 상세</h3>
+<img th:src="@{/product/read-img(fname=${product.img})}" style="width: 150px; height: 150px">
+<input th:if="${session.loginId.equals(product.id.id)}" type="button" value="이미지 수정" onclick="a()">
+<form name="f" action="/product/edit-img" method="post" enctype="multipart/form-data">
+    새 이미지: <input type="file" name="f"><br/>
+    <input type="hidden" name="num" th:value="${product.num}">
+    <input type="submit" value="수정">
+    <input type="button" value="취소" onclick="b()">
+</form>
+<form action="/product/edit" method="post">
+    <table border="1">
+        <!--<tr>
+            <th>상품 사진</th>
+            <td><img th:src="@{/product/read-img(fname=${product.img})}" style="width: 150px; height: 150px"><br/>
+                <input type="button" value="변경" onclick="a()">
+                <input type="file" id="addfile" name="f">
+                <input type="button" id="done" value="완료">
+                <input type="button" id="cancel" value="취소" onclick="hideInputFile()">
+            </td>
+        </tr>-->
+        <tr>
+            <th>번호</th>
+            <td>
+                <input type="text" name="num" th:value="${product.num}" readonly>
+            </td>
+        </tr>
+        <tr>
+            <th>상품명</th>
+            <td><input type="text" name="name" th:value="${product.name}"></td>
+        </tr>
+        <tr>
+            <th>가격</th>
+            <td><input type="text" name="price" th:value="${product.price}"></td>
+        </tr>
+        <tr>
+            <th>수량</th>
+            <td><input type="text" name="amount" th:value="${product.amount}"></td>
+        </tr>
+        <tr>
+            <th>판매자</th>
+            <td><input type="text" name="id" th:value="${product.id.id}" readonly></td>
+        </tr>
+        <tr th:if="${session.loginId.equals(product.id.id)}">
+            <th>편집</th>
+            <td>
+                <input type="submit" value="수정">
+                <input type="button" value="삭제" onclick="c()">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
