@@ -13,7 +13,7 @@ public interface BoardDao {
     @Select("SELECT * FROM board where num = #{num}")
     public Board select(@Param("num") int num);
 
-    @Select("SELECT *FROM board ORDER BY NUM")
+    @Select("SELECT *FROM board ORDER BY num")
     public ArrayList<Board> selectAll();
 
     @Select("SELECT * FROM board WHERE title LIKE #{title} ORDER BY num")
