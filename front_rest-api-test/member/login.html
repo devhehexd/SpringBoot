@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+      const login = () => {
+
+        let req = new XMLHttpRequest();
+
+        req.onload = () => { //요청 응답이 오면 자동 호출될 핸들러 등록
+          let obj = JSON.parse(req.responseText);
+          if(obj.flag) {
+            alert('로그인 성공')
+            localStorage.setItem("flag", true);
+            localStorage.setItem("loginId", obj.loginId);
+            localStorage.setItem("type", obj.type);
+        }
+        location.href = "../index.html";
+      }
+        
+        let id = document.getElementById("id").value;
+        let password = document.getElementById("password").value;
+        let params = 'id=' + id + '&password=' + password;
+        req.open('get', 'http://localhost:8081/members/login?' + params);
+
+        req.send();
+    }
+    </script>
+</head>
+<body>
+<h3>로그인</h3>
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <td><input type="text" id="id"></td>
+    </tr>
+    <tr>
+      <th>PASSWORD</th>
+      <td><input type="password" id="password"></td>
+    </tr>
+    <tr>
+      <th>LOGIN</th>
+      <td><input type="submit" value="로그인" onclick="login()"></td>
+    </tr>
+  </table>
+</body>
+</html>

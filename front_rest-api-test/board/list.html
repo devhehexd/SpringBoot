@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    window.onload = () => {
+      let req = new XMLHttpRequest();
+
+      req.onload = () => {
+        let obj = JSON.parse(req.responseText);
+        let txt= '<table border="1">';
+          txt += '<tr><th>글 번호</th><th>제목</th><th>작성자</th>';
+          for(let memDtoForIdCheck of obj.list) {
+            txt += '<tr><td>' + memDtoForIdCheck.num + '</td><td>' + memDtoForIdCheck.title + '</td><td>' + memDtoForIdCheck.writer.id + '</td></tr>';
+          }
+          txt += '<table>';
+
+        document.getElementById("list").innerHTML = txt;
+      }
+      req.open('get', 'http://localhost:8081/boards');
+      req.send();
+    }
+  </script>
+</head>
+<body>
+  <h3>글 목록</h3>
+  <a href="list.html">글 작성</a>
+  <div id="list"></div>
+</body>
+</html>
