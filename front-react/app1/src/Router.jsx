@@ -6,6 +6,7 @@ import NotFound from "./components/NotFound"
 import CreateAccount from "./components/CreateAccount"
 import Login from "./components/Login"
 import Info from "./components/Info"
+import BoardList from "./components/BoardList"
 import { Routes, Route } from "react-router-dom"
 
 export default function Router() {
@@ -18,6 +19,7 @@ export default function Router() {
       <Route path="/member/createaccount" element={<CreateAccount />} />
       <Route path="/member/login" element={<Login />} />
       <Route path="/member/info" element={<Info />} />
+      <Route path="/member/boardlist" element={<BoardList />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )

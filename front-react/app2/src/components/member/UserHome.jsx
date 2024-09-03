@@ -24,7 +24,7 @@ export default function Hello() {
       <div>
         <button onClick={logout}>로그아웃 </button> |
         <Link to="/member/info"> 내 정보확인</Link> |
-        <Link to="/member/boardlist"> 글 목록</Link>
+        <Link to="/board/boardlist"> 글 목록</Link>
       </div>;
   }
 
