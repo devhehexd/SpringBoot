@@ -1,6 +1,5 @@
 package com.example.spring_security.authentication;
 
-import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,8 +13,7 @@ import java.io.IOException;
 public class SuccessHandler implements AuthenticationSuccessHandler {
 
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
-        AuthenticationSuccessHandler.super.onAuthenticationSuccess(request, response, chain, authentication);
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         String loginId = authentication.getName();
         System.out.println("로그인 성공 / loginId: " + loginId);
 
@@ -35,8 +33,4 @@ public class SuccessHandler implements AuthenticationSuccessHandler {
         request.getRequestDispatcher(path).forward(request, response);
     }
 
-    @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-
-    }
 }

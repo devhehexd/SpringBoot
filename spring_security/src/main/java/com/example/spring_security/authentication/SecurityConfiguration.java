@@ -35,7 +35,7 @@ public class SecurityConfiguration {
                         //forward(서버 내 이동) 요청 모두 허용
                         authz.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
                                 .requestMatchers("/", "/join", "/autherror", "/loginform", "/login").permitAll()
-                                .requestMatchers("/auth").authenticated())
+                                .requestMatchers("/auth/**", "/index_**").authenticated())
                 //로그인 폼 설정
                 .formLogin((login) -> login
                         .loginPage("/loginform") //로그인 폼을 주는 요청 url
